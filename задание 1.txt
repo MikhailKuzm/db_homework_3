@@ -1,0 +1,4 @@
+SELECT job_industry_category, COUNT(*) AS customer_count
+FROM customers
+GROUP BY job_industry_category
+ORDER BY customer_count DESC;

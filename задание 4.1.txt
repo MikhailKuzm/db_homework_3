@@ -1,0 +1,12 @@
+SELECT
+  customer_id,
+  SUM(list_price) AS total_list_price,
+  MAX(list_price) AS max_list_price,
+  MIN(list_price) AS min_list_price,
+  COUNT(*) AS transaction_count
+FROM transactions
+GROUP BY
+  customer_id
+ORDER BY
+  total_list_price DESC,
+  transaction_count DESC;

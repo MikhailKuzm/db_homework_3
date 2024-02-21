@@ -1,0 +1,10 @@
+SELECT
+  customer_id,
+  SUM(list_price) OVER (PARTITION BY customer_id) AS total_list_price,
+  MAX(list_price) OVER (PARTITION BY customer_id) AS max_list_price,
+  MIN(list_price) OVER (PARTITION BY customer_id) AS min_list_price,
+  COUNT(*) OVER (PARTITION BY customer_id) AS transaction_count
+FROM transactions
+ORDER BY
+  total_list_price DESC,
+  transaction_count DESC;

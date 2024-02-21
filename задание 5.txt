@@ -1,0 +1,10 @@
+SELECT
+  *
+FROM (
+  SELECT
+    *,
+    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY transaction_date) AS row_num
+  FROM transactions
+) AS subquery
+WHERE
+  row_num = 1;

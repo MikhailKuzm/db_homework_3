@@ -1,0 +1,10 @@
+SELECT
+  t.brand,
+  COUNT(*) AS online_order_count
+FROM transactions t
+JOIN customers c ON t.customer_id = c.customer_id
+WHERE
+  t.online_order IN ('True')
+  AND c.job_industry_category IN ('IT')
+  AND order_status IN ('Approved')
+GROUP BY brand;
